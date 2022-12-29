@@ -1,9 +1,6 @@
-import 'package:clype/exports.dart';
 import 'package:clype/routes/routes.dart';
-import 'package:clype/screens/profile/view_profile_view.dart';
 import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:get/get.dart';
-import 'package:share_plus/share_plus.dart';
 
 class DynamiclinkProvider {
   Future<String> createLink(String uid) async {
@@ -37,7 +34,7 @@ class DynamiclinkProvider {
       final Uri refLink = instanceLink.link;
       final String uid = refLink.queryParameters['ref'].toString();
       //Share.share(uid, subject: 'Teesting the link');
-      print(uid);
+      //print(uid);
       Get.offAndToNamed(
         RoutesClass.getViewProfileRoute(),
         arguments: uid,

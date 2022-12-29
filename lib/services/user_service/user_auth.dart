@@ -40,6 +40,7 @@ class UserAuth {
     );
   }
 
+  ///For feching userData from firestore and pass it in the model
   Future<UserModel> userData() async {
     final userinfo = await getUserData();
 
@@ -53,6 +54,7 @@ class UserAuth {
     return user;
   }
 
+  //Logout from the application
   Future<void> logOut() async {
     await FirebaseAuth.instance.signOut();
   }
@@ -73,6 +75,7 @@ class UserAuth {
     return userData;
   }
 
+  ///Signing in with google
   Future<User?> signInWithGoogle() async {
     FirebaseAuth auth = FirebaseAuth.instance;
     User? user;

@@ -1,8 +1,6 @@
 import 'package:clype/exports.dart';
 import 'package:clype/routes/routes.dart';
 import 'package:clype/screens/auth_screen/login/login_viewmodel.dart';
-import 'package:clype/screens/auth_screen/sign_up/register_view.dart';
-import 'package:clype/screens/profile/view_profile_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 

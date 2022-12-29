@@ -1,6 +1,5 @@
 import 'package:clype/exports.dart';
 import 'package:clype/routes/routes.dart';
-import 'package:clype/screens/profile/view_profile_view.dart';
 import 'package:clype/services/user_service/user_auth.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
@@ -31,17 +30,25 @@ class LoginViewModel extends GetxController {
     try {
       if (emailController.text.isEmpty) {
         Fluttertoast.showToast(
-            msg: 'Email Cannot be empty', backgroundColor: Colors.red);
+          msg: 'Email Cannot be empty',
+          backgroundColor: Colors.red,
+        );
       } else if (passController.text.isEmpty) {
         Fluttertoast.showToast(
-            msg: 'Password Cannot be empty', backgroundColor: Colors.red);
+          msg: 'Password Cannot be empty',
+          backgroundColor: Colors.red,
+        );
       } else {
         inProgress = true;
         update();
+
+        ///Authenticating the user
         await userAuth.loginWithEmailAndPass(
           email: emailController.text.trim(),
           password: passController.text.trim(),
         );
+
+        ///Navigating to profile
         Get.offAndToNamed(
           RoutesClass.getViewProfileRoute(),
           arguments: FirebaseAuth.instance.currentUser!.uid,
@@ -59,9 +66,11 @@ class LoginViewModel extends GetxController {
     }
   }
 
+  ///Signing up with google
   Future<void> signInWithGoogle() async {
     await userAuth.signInWithGoogle().then(
       (value) async {
+        ///Sending userdata to firestore
         await _firestore
             .collection('users')
             .doc(_firebaseAuth.currentUser!.uid)

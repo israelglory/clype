@@ -2,7 +2,6 @@ import 'package:clype/routes/routes.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:get/get.dart';
-import 'package:share_plus/share_plus.dart';
 
 class SplashScreenController extends GetxController {
   final user = FirebaseAuth.instance.currentUser;
@@ -19,6 +18,7 @@ class SplashScreenController extends GetxController {
       const Duration(seconds: 3),
     );
 
+    ///Check if the user is loged in already
     if (user != null) {
       Get.offAndToNamed(
         RoutesClass.getViewProfileRoute(),
@@ -38,7 +38,7 @@ class SplashScreenController extends GetxController {
       final Uri refLink = instanceLink.link;
       final String uid = refLink.queryParameters['ref'].toString();
       //Share.share(uid, subject: 'Teesting the link');
-      print(uid);
+      //print(uid);
       Get.offAndToNamed(
         RoutesClass.getViewProfileRoute(),
         arguments: uid,

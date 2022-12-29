@@ -18,7 +18,6 @@ class RegisterScreen extends StatefulWidget {
 class _RegisterScreenState extends State<RegisterScreen> {
   @override
   Widget build(BuildContext context) {
-    bool show = true;
     return GetBuilder<RegisterViewModel>(
       init: RegisterViewModel(),
       builder: (model) {
@@ -270,12 +269,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               onTap: () {
                                 Get.offAndToNamed(RoutesClass.getLoginRoute());
                               },
-                              child: Container(
-                                child: Text(
-                                  "Login Instead",
-                                  style: TextStyle(
-                                      color: Colors.grey, fontSize: 18),
-                                ),
+                              child: Text(
+                                "Login Instead",
+                                style:
+                                    TextStyle(color: Colors.grey, fontSize: 18),
                               ),
                             ),
                           ],

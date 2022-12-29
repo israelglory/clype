@@ -1,5 +1,4 @@
 import 'package:clype/componants/profile_item.dart';
-import 'package:clype/constants/app_colors.dart';
 import 'package:clype/exports.dart';
 import 'package:clype/models/user_model.dart';
 import 'package:clype/screens/profile/view_profile_viewmodel.dart';
