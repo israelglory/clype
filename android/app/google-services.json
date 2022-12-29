@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "683339513479",
+    "project_id": "clype-b5604",
+    "storage_bucket": "clype-b5604.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:683339513479:android:3091b984870e82fe55c222",
+        "android_client_info": {
+          "package_name": "com.example.clype"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "683339513479-n9hgul1q912vg9n5fji1ndtk8qju5t60.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDtRebSuLoxhnv3J2txvccDJ2BYj2BjWaU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "683339513479-n9hgul1q912vg9n5fji1ndtk8qju5t60.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
