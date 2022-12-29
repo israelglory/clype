@@ -6,7 +6,7 @@ import 'package:share_plus/share_plus.dart';
 
 class SplashScreenController extends GetxController {
   final user = FirebaseAuth.instance.currentUser;
-  final userId = FirebaseAuth.instance.currentUser!.uid;
+
   @override
   void onInit() async {
     super.onInit();
@@ -22,10 +22,10 @@ class SplashScreenController extends GetxController {
     if (user != null) {
       Get.offAndToNamed(
         RoutesClass.getViewProfileRoute(),
-        arguments: userId,
+        arguments: FirebaseAuth.instance.currentUser!.uid,
       );
     } else {
-      Get.offAndToNamed(RoutesClass.getIntroScreenRoute());
+      Get.offAndToNamed(RoutesClass.getLoginRoute());
     }
 
     //intializeDynamicLink();
@@ -47,10 +47,10 @@ class SplashScreenController extends GetxController {
       if (user != null) {
         Get.offAndToNamed(
           RoutesClass.getViewProfileRoute(),
-          arguments: userId,
+          arguments: FirebaseAuth.instance.currentUser!.uid,
         );
       } else {
-        Get.offAndToNamed(RoutesClass.getIntroScreenRoute());
+        Get.offAndToNamed(RoutesClass.getLoginRoute());
       }
     }
   }

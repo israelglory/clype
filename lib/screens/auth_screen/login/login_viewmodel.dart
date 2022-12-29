@@ -6,6 +6,8 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 
 class LoginViewModel extends GetxController {
+  final _firestore = FirebaseFirestore.instance;
+  final _firebaseAuth = FirebaseAuth.instance;
   final UserAuth userAuth = UserAuth();
   TextEditingController emailController = TextEditingController();
   TextEditingController passController = TextEditingController();
@@ -55,5 +57,28 @@ class LoginViewModel extends GetxController {
         backgroundColor: Colors.red,
       );
     }
+  }
+
+  Future<void> signInWithGoogle() async {
+    await userAuth.signInWithGoogle().then(
+      (value) async {
+        await _firestore
+            .collection('users')
+            .doc(_firebaseAuth.currentUser!.uid)
+            .set(
+          {
+            'firstName': value!.displayName.toString().split(' ').first,
+            'lastName': value.displayName.toString().split(' ').last,
+            'phoneNumber': value.phoneNumber ?? 'No phone number',
+            'email': value.email,
+            'uid': _firebaseAuth.currentUser!.uid,
+          },
+        );
+        Get.offAndToNamed(
+          RoutesClass.getViewProfileRoute(),
+          arguments: FirebaseAuth.instance.currentUser!.uid,
+        );
+      },
+    );
   }
 }

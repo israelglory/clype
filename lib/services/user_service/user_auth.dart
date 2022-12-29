@@ -1,5 +1,7 @@
 import 'package:clype/exports.dart';
 import 'package:clype/models/user_model.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class UserAuth {
   final _firestore = FirebaseFirestore.instance;
@@ -69,5 +71,42 @@ class UserAuth {
       onError: (e) => print("Error getting document: $e"),
     );
     return userData;
+  }
+
+  Future<User?> signInWithGoogle() async {
+    FirebaseAuth auth = FirebaseAuth.instance;
+    User? user;
+
+    final GoogleSignIn googleSignIn = GoogleSignIn();
+
+    final GoogleSignInAccount? googleSignInAccount =
+        await googleSignIn.signIn();
+
+    if (googleSignInAccount != null) {
+      final GoogleSignInAuthentication googleSignInAuthentication =
+          await googleSignInAccount.authentication;
+
+      final AuthCredential credential = GoogleAuthProvider.credential(
+        accessToken: googleSignInAuthentication.accessToken,
+        idToken: googleSignInAuthentication.idToken,
+      );
+
+      try {
+        final UserCredential userCredential =
+            await auth.signInWithCredential(credential);
+
+        user = userCredential.user;
+      } on FirebaseAuthException catch (e) {
+        if (e.code == 'account-exists-with-different-credential') {
+          Fluttertoast.showToast(
+              msg: 'account-exists-with-different-credential');
+        } else if (e.code == 'invalid-credential') {
+          Fluttertoast.showToast(msg: 'Invalid Credential');
+        }
+      } catch (e) {
+        Fluttertoast.showToast(msg: e.toString());
+      }
+    }
+    return user;
   }
 }

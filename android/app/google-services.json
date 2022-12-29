@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "683339513479-fslv904l2bitjg0jk07bh6cb73j8qatd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.clype",
+            "certificate_hash": "96dfdbf1661a533315c42e97ed96a65dcf79f750"
+          }
+        },
+        {
           "client_id": "683339513479-n9hgul1q912vg9n5fji1ndtk8qju5t60.apps.googleusercontent.com",
           "client_type": 3
         }

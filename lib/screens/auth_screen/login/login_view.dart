@@ -195,7 +195,9 @@ class LoginScreen extends StatelessWidget {
                               height: 20,
                             ),
                             AppButton(
-                              onPressed: () {},
+                              onPressed: () async {
+                                await model.signInWithGoogle();
+                              },
                               borderWidth: 2,
                               radius: 25,
                               padding: const EdgeInsets.all(16.0),
