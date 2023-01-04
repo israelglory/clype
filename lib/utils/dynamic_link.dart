@@ -33,12 +33,20 @@ class DynamiclinkProvider {
     if (instanceLink != null) {
       final Uri refLink = instanceLink.link;
       final String uid = refLink.queryParameters['ref'].toString();
+      Get.offAndToNamed(
+        RoutesClass.getViewProfileRoute(),
+        arguments: uid,
+      );
+    }
+    FirebaseDynamicLinks.instance.onLink.listen((event) {
+      final Uri refLink = event.link;
+      final String uid = refLink.queryParameters['ref'].toString();
       //Share.share(uid, subject: 'Teesting the link');
       //print(uid);
       Get.offAndToNamed(
         RoutesClass.getViewProfileRoute(),
         arguments: uid,
       );
-    }
+    });
   }
 }
