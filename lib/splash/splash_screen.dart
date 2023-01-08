@@ -12,7 +12,7 @@ class SplashScreen extends StatelessWidget {
       builder: (controller) {
         return Scaffold(
           body: Center(
-            ///Splash Image
+            ///Splash Image that shows immediatly app runs
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
